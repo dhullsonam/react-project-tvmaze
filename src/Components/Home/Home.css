@@ -1,0 +1,28 @@
+.Heading{
+    margin: auto;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+.subheading{
+    text-align: center;
+}
+.search{
+    margin: auto;
+    text-align: center;
+}
+.searchBar{
+    width: 25%;
+    height: 25px;
+    /* padding: 2px 10px 2px 30px; */
+    margin: auto; 
+}
+.searchBar::placeholder {
+    font: 20px/3 sans-serif;
+    
+}
+.togglebar{
+    text-align: center;
+    
+}

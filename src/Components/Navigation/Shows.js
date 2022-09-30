@@ -1,6 +1,7 @@
-import { height } from "@mui/system";
-import { useEffect, useState } from "react";
 
+import { useEffect, useState } from "react";
+import imgdefault from '.././images/imgdefault.png';
+import "./show.css"
 
 function Show(props) {
     const [showsDetails, setShowDetails] = useState([]);
@@ -11,36 +12,36 @@ function Show(props) {
             .then(response => response.json())
             .then(data => setShowDetails(data))
 
-    }, [props.inputValue])
+    }, [val])
     console.log(showsDetails)
 
+    function getFiltered() {
+        return showsDetails.filter((items) => {
+            let lowerCaseString = items.show.name.toLowerCase()
+            //return lowerCaseString.includes(val)
+            return lowerCaseString.startsWith(val.toLowerCase())
+        })
+    }
 
     return (
         <>
-
-            <h2>{props.showProps}</h2>
-
-            {showsDetails.length > 0 ?
-                showsDetails.map((item, index) => {
-                    let itm = item.show
-                    let name = itm.name
-                    let url = (item.show.image == null) ? "" : item.show.image.medium
-                    return (
-                        <div style={{ height: "400px", width: "300px", backgroundColor: "gray", margin: "20px" }} >
-                            <div style={{ height: "300px", width: "300px", margin: "20px" }}>
-                                <img src={url} alt="image"></img>
+            <p className="para">{props.val}</p>
+            <div className="showData">
+                {getFiltered().length > 0 ?
+                    getFiltered().map((item, index) => {
+                        let itm = item.show
+                        let name = itm.name
+                        let url = (item.show.image == null) ? imgdefault : item.show.image.medium
+                        return (
+                           <div className="subHeading">
+                            <image src={url} className="img"/>
+                            <h4>{name}</h4>  
                             </div>
-
-
-                            <p>{ }</p>
-                            <p style={{overflow: "hidden", height :"20px" ,width :"300px"}}>{itm.summary}</p>
-                            <span>{itm.rating.average}</span>
-                        </div>
-                    )
-                })
-                :
-                <span></span>
-            }
+                        )
+                    })
+                    : showsDetails.length <= 0 ? <span></span> : <p style={{color:"red"}}>No result found !</p>
+                }
+            </div>
         </>
     )
 }

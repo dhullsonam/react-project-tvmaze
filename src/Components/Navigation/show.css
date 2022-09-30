@@ -1,0 +1,21 @@
+.para{
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.showData{
+    padding-top: 40px;
+    display: grid;
+    width: 80%;
+    padding-left: 12%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+   justify-content: center;
+
+}
+.subHeading{
+    border-bottom: .1px solid black;
+    background-color: rgb(226, 227, 227);
+     margin-bottom: 20px;
+}

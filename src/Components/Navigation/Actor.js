@@ -1,6 +1,6 @@
-import { margin, width } from "@mui/system";
 import { useEffect, useState } from "react"
-
+import imgdefault from '.././images/imgdefault.png'
+import './actor.css'
 
 function Actor(props) {
     const [actorData, setActorData] = useState([]);
@@ -12,29 +12,35 @@ function Actor(props) {
             .then(data => setActorData(data))
 
     }, [props.inputValue])
-    console.log(actorData)
+       function getFiltered() {
+        return actorData.filter((items) => {
+            let lowerCaseString = items.person.name.toLowerCase()
+            //return lowerCaseString.includes(val)
+            return lowerCaseString.startsWith(props.inputValue.toLowerCase())
+        })
+    }
     return (
                 <>
-                <p>{props.val}</p>
-                {actorData.length > 0 ?
-
-                        actorData.map((item) => {
+                <p className="para">{props.val}</p>
+                <div className="actorData">
+                {getFiltered().length > 0 ?
+                 getFiltered().map((item) => {
                             let name = item.person.name
-                            let url = (item.person.image == null) ? "" : item.person.image.medium
+                            let url = (item.person.image == null) ? imgdefault : item.person.image.medium
                             return (
                                 <>
-                                    <div style={{height:"300px" ,width:"250px" , backgroundColor:"lightgray" ,margin:"10px"}}>
-                                        <img src={url} alt="image"/>
-                                        {/* {item.person} */}
+                                    <div  className="subHeading " >
+                                        <image src={url} />
+                                        <p>{name}</p>
                                     </div>
-                                    <p>{item.person.name}</p>
+                                    
                                 </>
                             )
                         })
 
-                    :
-                    <span></span>
+                     : actorData.length <= 0 ? <span></span> : <p style={{color:"red"}}>No result found !</p>
         }
+        </div>
                 </>
        
     )

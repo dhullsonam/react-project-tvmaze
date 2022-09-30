@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 
 function Toggle(props) {
-   // Action on selected value : (make true either show or actor)
 
     return (
         <>
@@ -18,7 +17,8 @@ function Toggle(props) {
                     row
                     aria-labelledby="demo-radio-buttons-group-label"
                     defaultValue="Show"
-                    name="radio-buttons-group">
+                    name="radio-buttons-group" 
+                     size="large" >
                     <FormControlLabel value="actor" onChange={(e) => props.getValueFromToggle(e)} control={<Radio />} label="Actor" />
                     <FormControlLabel value="shows" onChange={(e) => props.getValueFromToggle(e)} control={<Radio />} label="Show" />
                 </RadioGroup>

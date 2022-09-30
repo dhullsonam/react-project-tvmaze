@@ -1,0 +1,25 @@
+
+/* .para{
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+} */
+.actorData{
+   display: grid;
+    width: 80%;
+    padding-left: 12%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    justify-items: center;
+   justify-content: center;
+}
+
+.subHeading{
+    border-bottom: .1px solid black;
+    background-color: rgb(226, 227, 227);
+     margin-bottom: 20px;
+}
+.subHeading h4{
+    padding-left: 10px;
+}
+

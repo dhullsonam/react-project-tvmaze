@@ -1,13 +1,15 @@
 
-import React, { useState } from "react";
+import React from "react";
+import './Home/Home.css'
 
-function SearchBar( props) {
+function SearchBar(props) {
     return (
         <>
             <input
-                placeholder={"search"}
+                placeholder={"e.g : friends..."}
                 onChange={(e) => props.valueFromSearchBar(e)}
-                // value={inputValue}
+                className="searchBar"
+                
             />
         </>
     )
