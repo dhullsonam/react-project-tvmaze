@@ -9,7 +9,6 @@ function SearchBar(props) {
                 placeholder={"e.g : friends..."}
                 onChange={(e) => props.valueFromSearchBar(e)}
                 className="searchBar"
-                
             />
         </>
     )

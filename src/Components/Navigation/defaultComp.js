@@ -15,16 +15,14 @@ function DefaultComponent() {
     return (
         <div className="showData">
             {
-                actorData.map((item ,index) => {
+                actorData.map((item, index) => {
                     let itm = item.show
                     let name = itm.name
                     let url = (item.show.image == null) ? defaultImg : item.show.image.medium
                     return (
                         <div className="subHeading" key={index}>
-                            <img src={url} alt="pic" className="img"/>
+                            <img src={url} alt="pic" className="img" />
                             <h4>{name}</h4>
-                            {/* <div className="imageBlock"><p>{itm.summary}</p></div> */}
-                            {/* <h1>{itm.rating.average}</h1> */}
                         </div>
                     )
                 })

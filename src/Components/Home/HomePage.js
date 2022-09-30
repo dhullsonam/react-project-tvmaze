@@ -10,11 +10,11 @@ function HomePage() {
     const [toggleValue, setToggleValue] = useState('');
     const [inputValue, setInputValue] = useState('');
     const getValueFromToggle = (e) => {
-        setToggleValue(e.target.value) ;  
-        
+        setToggleValue(e.target.value);
+
     }
     const valueFromSearchBar = (e) => {
-        setInputValue(e.target.value)  
+        setInputValue(e.target.value)
     }
 
     return (
@@ -27,11 +27,11 @@ function HomePage() {
             <div className="togglebar">
                 <Toggle getValueFromToggle={getValueFromToggle} />
             </div>
-          
+
             <div className="search">
-                <SearchBar valueFromSearchBar={valueFromSearchBar}/>
+                <SearchBar valueFromSearchBar={valueFromSearchBar} />
             </div>
-  <div>
+            <div>
 
                 {toggleValue === 'actor' ?
                     <Actor
@@ -43,7 +43,7 @@ function HomePage() {
                         <Show inputValue={inputValue}
                             val={"Enter The show above"}
                         />
-                        : <DefaultComponent/>
+                        : <DefaultComponent />
                 }
             </div>
 

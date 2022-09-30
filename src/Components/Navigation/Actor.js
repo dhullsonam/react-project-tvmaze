@@ -4,7 +4,7 @@ import './actor.css'
 
 function Actor(props) {
     const [actorData, setActorData] = useState([]);
-    // console.log(props.inputValue)
+
     useEffect(() => {
 
         fetch(`https://api.tvmaze.com/search/people?q=${props.inputValue}`)
@@ -12,7 +12,7 @@ function Actor(props) {
             .then(data => setActorData(data))
 
     }, [props.inputValue])
-       function getFiltered() {
+    function getFiltered() {
         return actorData.filter((items) => {
             let lowerCaseString = items.person.name.toLowerCase()
             //return lowerCaseString.includes(val)
@@ -20,29 +20,29 @@ function Actor(props) {
         })
     }
     return (
-                <>
-                <p className="para">{props.val}</p>
-                <div className="actorData">
+        <>
+            <p className="para">{props.val}</p>
+            <div className="actorData">
                 {getFiltered().length > 0 ?
-                 getFiltered().map((item ,index) => {
-                            let name = item.person.name
-                            let url = (item.person.image == null) ? imgdefault : item.person.image.medium
-                            return (
-                                <>
-                                    <div className="subHeading" key={index} >
-                                        <img src={url} alt="pic"/>
-                                        <p>{name}</p>
-                                    </div>
-                                    
-                                </>
-                            )
-                        })
+                    getFiltered().map((item, index) => {
+                        let name = item.person.name
+                        let url = (item.person.image == null) ? imgdefault : item.person.image.medium
+                        return (
+                            <>
+                                <div className="subHeading" key={index} >
+                                    <img src={url} alt="pic" />
+                                    <p>{name}</p>
+                                </div>
 
-                     : actorData.length <= 0 ? <span></span> : <p style={{color:"red"}}>No result found !</p>
-        }
-        </div>
-                </>
-       
+                            </>
+                        )
+                    })
+
+                    : actorData.length <= 0 ? <span></span> : <p style={{ color: "red" }}>No result found !</p>
+                }
+            </div>
+        </>
+
     )
 }
 export default Actor

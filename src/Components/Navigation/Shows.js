@@ -13,14 +13,17 @@ function Show(props) {
             .then(data => setShowDetails(data))
 
     }, [val])
-    console.log(showsDetails)
 
-    function getFiltered() {
-        return showsDetails.filter((items) => {
+    const getFiltered = () => {
+        const copyArray = [...showsDetails]
+        let i = copyArray.filter((items) => {
             let lowerCaseString = items.show.name.toLowerCase()
             //return lowerCaseString.includes(val)
+            console.log("a: " + lowerCaseString + " v: " + val.toLowerCase())
+            console.log("result: " + lowerCaseString.startsWith(val.toLowerCase()))
             return lowerCaseString.startsWith(val.toLowerCase())
         })
+        return i
     }
 
     return (
@@ -36,14 +39,14 @@ function Show(props) {
                         let name = itm.name
                         let url = (item.show.image == null) ? imgdefault : item.show.image.medium
                         return (
-                           <div className="subHeading" key={index}>
-                            <img src={url} className="img" alt="pic"/>
-                            <h4>{name}</h4>
-                            
+                            <div className="subHeading" key={index}>
+                                <img src={url} className="img" alt="pic" />
+                                <h4>{name}</h4>
+
                             </div>
                         )
                     })
-                    : showsDetails.length <= 0 ? <span></span> : <p style={{color:"red"}}>No result found !</p>
+                    : showsDetails.length <= 0 ? <span></span> : <p style={{ color: "red" }}>No result found !</p>
 
                 }
             </div>
