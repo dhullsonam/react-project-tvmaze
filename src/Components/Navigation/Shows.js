@@ -25,21 +25,26 @@ function Show(props) {
 
     return (
         <>
+
             <p className="para">{props.val}</p>
+
             <div className="showData">
+
                 {getFiltered().length > 0 ?
                     getFiltered().map((item, index) => {
                         let itm = item.show
                         let name = itm.name
                         let url = (item.show.image == null) ? imgdefault : item.show.image.medium
                         return (
-                           <div className="subHeading">
-                            <image src={url} className="img"/>
-                            <h4>{name}</h4>  
+                           <div className="subHeading" key={index}>
+                            <img src={url} className="img" alt="pic"/>
+                            <h4>{name}</h4>
+                            
                             </div>
                         )
                     })
                     : showsDetails.length <= 0 ? <span></span> : <p style={{color:"red"}}>No result found !</p>
+
                 }
             </div>
         </>

@@ -24,13 +24,13 @@ function Actor(props) {
                 <p className="para">{props.val}</p>
                 <div className="actorData">
                 {getFiltered().length > 0 ?
-                 getFiltered().map((item) => {
+                 getFiltered().map((item ,index) => {
                             let name = item.person.name
                             let url = (item.person.image == null) ? imgdefault : item.person.image.medium
                             return (
                                 <>
-                                    <div  className="subHeading " >
-                                        <image src={url} />
+                                    <div className="subHeading" key={index} >
+                                        <img src={url} alt="pic"/>
                                         <p>{name}</p>
                                     </div>
                                     
