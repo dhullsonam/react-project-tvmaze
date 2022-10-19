@@ -6,7 +6,7 @@ function Actor(props) {
     const [actorData, setActorData] = useState([]);
 
     useEffect(() => {
-
+console.log("useEffect")
         fetch(`https://api.tvmaze.com/search/people?q=${props.inputValue}`)
             .then(response => response.json())
             .then(data => setActorData(data))

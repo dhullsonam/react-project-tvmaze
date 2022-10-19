@@ -9,14 +9,14 @@ import './Home.css'
 function HomePage() {
     const [toggleValue, setToggleValue] = useState('');
     const [inputValue, setInputValue] = useState('');
+
     const getValueFromToggle = (e) => {
         setToggleValue(e.target.value);
-
     }
     const valueFromSearchBar = (e) => {
         setInputValue(e.target.value)
     }
-
+    
     return (
         <>
             <div className="Heading">
